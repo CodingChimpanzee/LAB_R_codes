@@ -57,7 +57,7 @@ BJS_1_PA <- NULL
 setwd(paste0("CSV_DATA/BJS-1"))
 for(file in BJS_1){
   temp <- fread(file, header=T)
-  temp <- (temp)[PracStimulus.ACC==1,
+  temp <- (temp)[(PracStimulus.ACC==1)&(Correct!="SPACE"),
                     .(mean_by_warn_sound = mean(PracStimulus.RT)),
                     by = Warnsound]
   BJS_1_PA <- rbind(BJS_1_PA, temp)
@@ -71,7 +71,7 @@ BJS_2_PA <- NULL
 setwd("C:/Users/Biocomputing/Documents/CSV_DATA/BJS-2")
 for(file in BJS_2){
   temp <- fread(file, header=T)
-  temp <- (temp)[PracStimulus.ACC==1,
+  temp <- (temp)[(PracStimulus.ACC==1)&(Correct!="SPACE"),
                  .(mean_by_warn_sound = mean(PracStimulus.RT)),
                  by = Warnsound]
   BJS_2_PA <- rbind(BJS_2_PA, temp)
@@ -86,7 +86,7 @@ CHS_1_PA <- NULL
 setwd("C:/Users/Biocomputing/Documents/CSV_DATA/CHS-1")
 for(file in CHS_1){
   temp <- fread(file, header=T)
-  temp <- (temp)[PracStimulus.ACC==1,
+  temp <- (temp)[(PracStimulus.ACC==1)&(Correct!="SPACE"),
                  .(mean_by_warn_sound = mean(PracStimulus.RT)),
                  by = Warnsound]
   CHS_1_PA <- rbind(CHS_1_PA, temp)
@@ -100,7 +100,7 @@ CHS_2_PA <- NULL
 setwd("C:/Users/Biocomputing/Documents/CSV_DATA/CHS-2")
 for(file in CHS_2){
   temp <- fread(file, header=T)
-  temp <- (temp)[PracStimulus.ACC==1,
+  temp <- (temp)[(PracStimulus.ACC==1)&(Correct!="SPACE"),
                  .(mean_by_warn_sound = mean(PracStimulus.RT)),
                  by = Warnsound]
   CHS_2_PA <- rbind(CHS_2_PA, temp)
@@ -115,7 +115,7 @@ HYB_1_PA <- NULL
 setwd("C:/Users/Biocomputing/Documents/CSV_DATA/HYB-1")
 for(file in HYB_1){
   temp <- fread(file, header=T)
-  temp <- (temp)[PracStimulus.ACC==1,
+  temp <- (temp)[(PracStimulus.ACC==1)&(Correct!="SPACE"),
                  .(mean_by_warn_sound = mean(PracStimulus.RT)),
                  by = Warnsound]
   HYB_1_PA <- rbind(HYB_1_PA, temp)
@@ -131,7 +131,7 @@ JMS_1_PA <- NULL
 setwd("C:/Users/Biocomputing/Documents/CSV_DATA/JMS-1")
 for(file in JMS_1){
   temp <- fread(file, header=T)
-  temp <- (temp)[PracStimulus.ACC==1,
+  temp <- (temp)[(PracStimulus.ACC==1)&(Correct!="SPACE"),
                  .(mean_by_warn_sound = mean(PracStimulus.RT)),
                  by = Warnsound]
   JMS_1_PA <- rbind(JMS_1_PA, temp)
@@ -145,7 +145,7 @@ JMS_2_PA <- NULL
 setwd("C:/Users/Biocomputing/Documents/CSV_DATA/JMS-2")
 for(file in JMS_2){
   temp <- fread(file, header=T)
-  temp <- (temp)[PracStimulus.ACC==1,
+  temp <- (temp)[(PracStimulus.ACC==1)&(Correct!="SPACE"),
                  .(mean_by_warn_sound = mean(PracStimulus.RT)),
                  by = Warnsound]
   JMS_2_PA <- rbind(JMS_2_PA, temp)
@@ -160,7 +160,7 @@ KDY_1_PA <- NULL
 setwd("C:/Users/Biocomputing/Documents/CSV_DATA/KDY-1")
 for(file in KDY_1){
   temp <- fread(file, header=T)
-  temp <- (temp)[PracStimulus.ACC==1,
+  temp <- (temp)[(PracStimulus.ACC==1)&(Correct!="SPACE"),
                  .(mean_by_warn_sound = mean(PracStimulus.RT)),
                  by = Warnsound]
   KDY_1_PA <- rbind(KDY_1_PA, temp)
@@ -174,7 +174,7 @@ KDY_2_PA <- NULL
 setwd("C:/Users/Biocomputing/Documents/CSV_DATA/KDY-2")
 for(file in KDY_2){
   temp <- fread(file, header=T)
-  temp <- (temp)[PracStimulus.ACC==1,
+  temp <- (temp)[(PracStimulus.ACC==1)&(Correct!="SPACE"),
                  .(mean_by_warn_sound = mean(PracStimulus.RT)),
                  by = Warnsound]
   KDY_2_PA <- rbind(KDY_2_PA, temp)
@@ -189,7 +189,7 @@ KTW_1_PA <- NULL
 setwd("C:/Users/Biocomputing/Documents/CSV_DATA/KTW-1")
 for(file in KTW_1){
   temp <- fread(file, header=T)
-  temp <- (temp)[PracStimulus.ACC==1,
+  temp <- (temp)[(PracStimulus.ACC==1)&(Correct!="SPACE"),
                  .(mean_by_warn_sound = mean(PracStimulus.RT)),
                  by = Warnsound]
   KTW_1_PA <- rbind(KTW_1_PA, temp)
@@ -203,7 +203,7 @@ KTW_2_PA <- NULL
 setwd("C:/Users/Biocomputing/Documents/CSV_DATA/KTW-2")
 for(file in KTW_2){
   temp <- fread(file, header=T)
-  temp <- (temp)[PracStimulus.ACC==1,
+  temp <- (temp)[(PracStimulus.ACC==1)&(Correct!="SPACE"),
                  .(mean_by_warn_sound = mean(PracStimulus.RT)),
                  by = Warnsound]
   KTW_2_PA <- rbind(KTW_2_PA, temp)
@@ -218,7 +218,7 @@ LEC_1_PA <- NULL
 setwd("C:/Users/Biocomputing/Documents/CSV_DATA/LEC-1")
 for(file in LEC_1){
   temp <- fread(file, header=T)
-  temp <- (temp)[PracStimulus.ACC==1,
+  temp <- (temp)[(PracStimulus.ACC==1)&(Correct!="SPACE"),
                  .(mean_by_warn_sound = mean(PracStimulus.RT)),
                  by = Warnsound]
   LEC_1_PA <- rbind(LEC_1_PA, temp)
@@ -232,7 +232,7 @@ LEC_2_PA <- NULL
 setwd("C:/Users/Biocomputing/Documents/CSV_DATA/LEC-2")
 for(file in LEC_2){
   temp <- fread(file, header=T)
-  temp <- (temp)[PracStimulus.ACC==1,
+  temp <- (temp)[(PracStimulus.ACC==1)&(Correct!="SPACE"),
                  .(mean_by_warn_sound = mean(PracStimulus.RT)),
                  by = Warnsound]
   LEC_2_PA <- rbind(LEC_2_PA, temp)
@@ -247,7 +247,7 @@ LHJ_1_PA <- NULL
 setwd("C:/Users/Biocomputing/Documents/CSV_DATA/LHJ-1")
 for(file in LHJ_1){
   temp <- fread(file, header=T)
-  temp <- (temp)[PracStimulus.ACC==1,
+  temp <- (temp)[(PracStimulus.ACC==1)&(Correct!="SPACE"),
                  .(mean_by_warn_sound = mean(PracStimulus.RT)),
                  by = Warnsound]
   LHJ_1_PA <- rbind(LHJ_1_PA, temp)
@@ -261,7 +261,7 @@ LHJ_2_PA <- NULL
 setwd("C:/Users/Biocomputing/Documents/CSV_DATA/LHJ-2")
 for(file in LHJ_2){
   temp <- fread(file, header=T)
-  temp <- (temp)[PracStimulus.ACC==1,
+  temp <- (temp)[(PracStimulus.ACC==1)&(Correct!="SPACE"),
                  .(mean_by_warn_sound = mean(PracStimulus.RT)),
                  by = Warnsound]
   LHJ_2_PA <- rbind(LHJ_2_PA, temp)
@@ -276,7 +276,7 @@ LKS_1_PA <- NULL
 setwd("C:/Users/Biocomputing/Documents/CSV_DATA/LKS-1")
 for(file in LKS_1){
   temp <- fread(file, header=T)
-  temp <- (temp)[PracStimulus.ACC==1,
+  temp <- (temp)[(PracStimulus.ACC==1)&(Correct!="SPACE"),
                  .(mean_by_warn_sound = mean(PracStimulus.RT)),
                  by = Warnsound]
   LKS_1_PA <- rbind(LKS_1_PA, temp)
@@ -290,7 +290,7 @@ LKS_2_PA <- NULL
 setwd("C:/Users/Biocomputing/Documents/CSV_DATA/LKS-2")
 for(file in LKS_2){
   temp <- fread(file, header=T)
-  temp <- (temp)[PracStimulus.ACC==1,
+  temp <- (temp)[(PracStimulus.ACC==1)&(Correct!="SPACE"),
                  .(mean_by_warn_sound = mean(PracStimulus.RT)),
                  by = Warnsound]
   LKS_2_PA <- rbind(LKS_2_PA, temp)
@@ -305,7 +305,7 @@ OSH_1_PA <- NULL
 setwd("C:/Users/Biocomputing/Documents/CSV_DATA/OSH-1")
 for(file in OSH_1){
   temp <- fread(file, header=T)
-  temp <- (temp)[PracStimulus.ACC==1,
+  temp <- (temp)[(PracStimulus.ACC==1)&(Correct!="SPACE"),
                  .(mean_by_warn_sound = mean(PracStimulus.RT)),
                  by = Warnsound]
   OSH_1_PA <- rbind(OSH_1_PA, temp)
@@ -319,7 +319,7 @@ OSH_2_PA <- NULL
 setwd("C:/Users/Biocomputing/Documents/CSV_DATA/OSH-2")
 for(file in OSH_2){
   temp <- fread(file, header=T)
-  temp <- (temp)[PracStimulus.ACC==1,
+  temp <- (temp)[(PracStimulus.ACC==1)&(Correct!="SPACE"),
                  .(mean_by_warn_sound = mean(PracStimulus.RT)),
                  by = Warnsound]
   OSH_2_PA <- rbind(OSH_2_PA, temp)
@@ -334,7 +334,7 @@ PSY_1_PA <- NULL
 setwd("C:/Users/Biocomputing/Documents/CSV_DATA/PSY-1")
 for(file in PSY_1){
   temp <- fread(file, header=T)
-  temp <- (temp)[PracStimulus.ACC==1,
+  temp <- (temp)[(PracStimulus.ACC==1)&(Correct!="SPACE"),
                  .(mean_by_warn_sound = mean(PracStimulus.RT)),
                  by = Warnsound]
   PSY_1_PA <- rbind(PSY_1_PA, temp)
@@ -348,7 +348,7 @@ PSY_2_PA <- NULL
 setwd("C:/Users/Biocomputing/Documents/CSV_DATA/PSY-2")
 for(file in PSY_2){
   temp <- fread(file, header=T)
-  temp <- (temp)[PracStimulus.ACC==1,
+  temp <- (temp)[(PracStimulus.ACC==1)&(Correct!="SPACE"),
                  .(mean_by_warn_sound = mean(PracStimulus.RT)),
                  by = Warnsound]
   PSY_2_PA <- rbind(PSY_2_PA, temp)
