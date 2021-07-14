@@ -8,3 +8,4 @@ It includes
 - How to estimate PA(Phasic Alertness) and EV(Executive Vigilance)
 
 I'm still undergraduate intern in the lab, hence the code can be very inaccurate
+* 2nd_week folder was discarded due to personal information
