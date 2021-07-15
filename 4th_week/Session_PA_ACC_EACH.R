@@ -45,7 +45,6 @@ for(file in S1_N){
   temp <- (temp)[Correct!="SPACE",
                  .(accuracy = mean(PracStimulus.ACC)),
                  by = Warnsound]
-  print(temp)
   temp <- abs(temp[1,2]-temp[2,2])
   temp <- as.data.table(temp)
   temp <- setnames(temp, "accuracy", "ACC_mean_diff_each")
