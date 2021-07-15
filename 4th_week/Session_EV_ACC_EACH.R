@@ -338,8 +338,6 @@ session_bind_all_EVACC <- cbind(block, session_bind_all_EVACC)
 #------------------------------------------------------------------------------#
 # ACC tendency between sessions (in graphs)
 
-EVACCa <- aov(Blocks~accuracy, data=session_bind_all_EVACC)
-
 g1 <- ggplot(data = session_bind_all_EVACC,
              aes(x = Blocks, y = accuracy, group = tDCS, color = tDCS)) + geom_line(size=1)
 g1 <- g1 + geom_errorbar(aes(ymin = accuracy-sr, ymax = accuracy+sr), width = 0.2) + geom_point(size = 3)
