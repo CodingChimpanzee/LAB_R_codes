@@ -4,6 +4,7 @@
 #import library
 library(data.table)
 library(ggplot2)
+library(scales)
 setwd("C:/Users/Biocomputing/Documents")
 
 PPC <- fread("C:/Users/Biocomputing/Documents/CSV_DATA/PPC.csv", header = T)
@@ -378,11 +379,13 @@ session_bind_all <- rbind(session_bind_PACC_N, session_bind_PACC_PPC)
 # ACC tendency between sessions (in graphs)
 
 
+
 g1 <- ggplot(data = session_bind_all,
              aes(x = Blocks, y = ACC_mean_diff, group = tDCS, color = tDCS)) + geom_line(size=1)
 g1 <- g1 + geom_errorbar(aes(ymin = ACC_mean_diff-sr, ymax = ACC_mean_diff+sr), width = 0.2) + geom_point(size = 3)
 g1 <- g1 + ggtitle("Accuracy difference in phasic alertness task") + theme(plot.title = element_text(hjust=0.5))
-g1 <- g1 + annotate(geom="text", x=1.2, y=0.04, label="**", size = 10, colour = "red") + annotate(geom="text", x=1.2, y=0.01, label="**", size = 10, colour = "red")
+#g1 <- g1 + annotate(geom="text", x=1.2, y=0.04, label="**", size = 10, colour = "red") + annotate(geom="text", x=1.2, y=0.01, label="**", size = 10, colour = "red")
+#g1 <- g1 + scale_y_continuous(lables = scales::percent)
 plot(g1)
 
 # P value based on student paired t-test
@@ -394,4 +397,3 @@ print(res4$p.value)
 print(res5$p.value)
 print(res6$p.value)
 
-# https://blog.naver.com/nife0719/221000580841

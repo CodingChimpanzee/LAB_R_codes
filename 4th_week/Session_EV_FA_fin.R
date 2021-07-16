@@ -361,6 +361,8 @@ SR_PPC <- rbind(SR_PPC, S6_EVFA_PPC[,
 #P6 <- rbind(S6_EVFA_N_P, S6_EVFA_PPC_P)
 #res6 <- t.test(temp~tDCS, data=P6, var.equal = FALSE, alternative = "less")
 
+S6_ALL <- cbind(S6_EVFA_N, S6_EVFA_PPC)
+
 S6_EVFA_N <- S6_EVFA_N[,
                        .(FA = sum(temp)/11),
 ]

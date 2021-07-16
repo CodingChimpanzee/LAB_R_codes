@@ -200,7 +200,7 @@ S1_PACC_N_P <- cbind(Sham ,S1_PACC_N)
 S1_PACC_PPC_P <- cbind(PPC ,S1_PACC_PPC)
 P1 <- rbind(S1_PACC_N_P, S1_PACC_PPC_P)
 res1 <- t.test(accuracy~tDCS, data=P1,
-               paired = TRUE, var.equal = FALSE, alternative = "less")
+               paired = TRUE, var.equal = FALSE)
 
 
 S1_PACC_N <- S1_PACC_N[,
@@ -226,7 +226,7 @@ S2_PACC_N_P <- cbind(Sham ,S2_PACC_N)
 S2_PACC_PPC_P <- cbind(PPC ,S2_PACC_PPC)
 P2 <- rbind(S2_PACC_N_P, S2_PACC_PPC_P)
 res2 <- t.test(accuracy~tDCS, data=P2,
-               paired = TRUE, var.equal = FALSE, alternative = "less")
+               paired = TRUE, var.equal = FALSE)
 
 S2_PACC_N <- S2_PACC_N[,
                        .(accuracy = mean(accuracy)),
@@ -251,7 +251,7 @@ S3_PACC_N_P <- cbind(Sham ,S3_PACC_N)
 S3_PACC_PPC_P <- cbind(PPC ,S3_PACC_PPC)
 P3 <- rbind(S3_PACC_N_P, S3_PACC_PPC_P)
 res3 <- t.test(accuracy~tDCS, data=P3, 
-               paired = TRUE, var.equal = FALSE, alternative = "less")
+               paired = TRUE, var.equal = FALSE)
 
 S3_PACC_N <- S3_PACC_N[,
                        .(accuracy = mean(accuracy)),
@@ -276,7 +276,7 @@ S4_PACC_N_P <- cbind(Sham ,S4_PACC_N)
 S4_PACC_PPC_P <- cbind(PPC ,S4_PACC_PPC)
 P4 <- rbind(S4_PACC_N_P, S4_PACC_PPC_P)
 res4 <- t.test(accuracy~tDCS, data=P4, 
-               paired = TRUE, var.equal = FALSE, alternative = "less")
+               paired = TRUE, var.equal = FALSE)
 
 S4_PACC_N <- S4_PACC_N[,
                        .(accuracy = mean(accuracy)),
@@ -301,7 +301,7 @@ S5_PACC_N_P <- cbind(Sham ,S5_PACC_N)
 S5_PACC_PPC_P <- cbind(PPC ,S5_PACC_PPC)
 P5 <- rbind(S5_PACC_N_P, S5_PACC_PPC_P)
 res5 <- t.test(accuracy~tDCS, data=P5,
-               paired = TRUE, var.equal = FALSE, alternative = "less")
+               paired = TRUE, var.equal = FALSE)
 
 S5_PACC_N <- S5_PACC_N[,
                        .(accuracy = mean(accuracy)),
@@ -326,7 +326,7 @@ S6_PACC_N_P <- cbind(Sham ,S6_PACC_N)
 S6_PACC_PPC_P <- cbind(PPC ,S6_PACC_PPC)
 P6 <- rbind(S6_PACC_N_P, S6_PACC_PPC_P)
 res6 <- t.test(accuracy~tDCS, data=P6,
-               paired = TRUE, var.equal = FALSE, alternative = "less")
+               paired = TRUE, var.equal = FALSE)
 
 S6_PACC_N <- S6_PACC_N[,
                        .(accuracy = mean(accuracy)),
