@@ -373,20 +373,30 @@ session_bind_PACC_N <- rbind(session_bind_PACC_N, S6_PACC_N_diff)
 session_bind_PACC_PPC <- rbind(session_bind_PACC_PPC, S6_PACC_PPC_diff)
 
 
+
+# Before binding, divide ACC_mean_diff value as a baseline(Block 1) value
+
+# SHAM
 session_bind_PACC_N <- cbind(block, Sham, session_bind_PACC_N, SR_N)
+session_bind_PACC_N_value <- session_bind_PACC_N[,3]
+session_bind_PACC_N_value <- session_bind_PACC_N_value[,
+ACC_mean_diff := mapply(ACC_mean_diff, session_bind_PACC_N_value[1,1], FUN = function(x, y) (x*100)/y)]
+session_bind_PACC_N <- session_bind_PACC_N[,!("ACC_mean_diff"),]
+session_bind_PACC_N <- cbind(session_bind_PACC_N, session_bind_PACC_N_value)
+
+# PPC
 session_bind_PACC_PPC <- cbind(block, PPC, session_bind_PACC_PPC, SR_PPC)
+session_bind_PACC_PPC_value <- session_bind_PACC_PPC[,3]
+session_bind_PACC_PPC_value <- session_bind_PACC_PPC_value[,
+ACC_mean_diff := mapply(ACC_mean_diff, session_bind_PACC_PPC_value[1,1], FUN = function(x, y) (x*100)/y)]
+session_bind_PACC_PPC <- session_bind_PACC_PPC[,!("ACC_mean_diff"),]
+session_bind_PACC_PPC <- cbind(session_bind_PACC_PPC, session_bind_PACC_PPC_value)
+
+
+# Bind the total value
 session_bind_all <- rbind(session_bind_PACC_N, session_bind_PACC_PPC)
 #------------------------------------------------------------------------------#
 # ACC tendency between sessions (in graphs)
-
-# Before that, divide ACC_mean_diff value as a baseline(Block 1) value
-session_bind_value <- session_bind_all[,3] # Extract value from all
-session_bind_value <- session_bind_value[,
-                                          ACC_mean_diff := mapply(ACC_mean_diff, session_bind_value[1,1], FUN = function(x, y) (x*100)/y)]
-
-session_bind_all <- session_bind_all[,!("ACC_mean_diff"),]
-session_bind_all <- cbind(session_bind_all, session_bind_value)
-
 
 g1 <- ggplot(data = session_bind_all,
              aes(x = Blocks, y = ACC_mean_diff, group = tDCS, color = tDCS)) + geom_line(size=1)
