@@ -196,7 +196,7 @@ SR_PPC <- rbind(SR_PPC, S1_EVACC_PPC[,
 S1_EVACC_N_P <- cbind(Sham ,S1_EVACC_N)
 S1_EVACC_PPC_P <- cbind(PPC ,S1_EVACC_PPC)
 P1 <- rbind(S1_EVACC_N_P, S1_EVACC_PPC_P)
-res1 <- t.test(accuracy~tDCS, data=P1, paired = TRUE, var.equal = FALSE, alternative = "less")
+res1 <- t.test(accuracy~tDCS, data=P1, paired = TRUE, var.equal = FALSE)
 
 S1_EVACC_N <- S1_EVACC_N[,
                          .(accuracy = mean(accuracy)),
@@ -220,7 +220,7 @@ SR_PPC <- rbind(SR_PPC, S2_EVACC_PPC[,
 S2_EVACC_N_P <- cbind(Sham ,S2_EVACC_N)
 S2_EVACC_PPC_P <- cbind(PPC ,S2_EVACC_PPC)
 P2 <- rbind(S2_EVACC_N_P, S2_EVACC_PPC_P)
-res2 <- t.test(accuracy~tDCS, data=P2, paired = TRUE, var.equal = FALSE, alternative = "less")
+res2 <- t.test(accuracy~tDCS, data=P2, paired = TRUE, var.equal = FALSE)
 
 S2_EVACC_N <- S2_EVACC_N[,
                          .(accuracy = mean(accuracy)),
@@ -244,7 +244,7 @@ SR_PPC <- rbind(SR_PPC, S3_EVACC_PPC[,
 S3_EVACC_N_P <- cbind(Sham ,S3_EVACC_N)
 S3_EVACC_PPC_P <- cbind(PPC ,S3_EVACC_PPC)
 P3 <- rbind(S3_EVACC_N_P, S3_EVACC_PPC_P)
-res3 <- t.test(accuracy~tDCS, data=P3, paired = TRUE, var.equal = FALSE, alternative = "less")
+res3 <- t.test(accuracy~tDCS, data=P3, paired = TRUE, var.equal = FALSE)
 
 S3_EVACC_N <- S3_EVACC_N[,
                          .(accuracy = mean(accuracy)),
@@ -268,7 +268,7 @@ SR_PPC <- rbind(SR_PPC, S4_EVACC_PPC[,
 S4_EVACC_N_P <- cbind(Sham ,S4_EVACC_N)
 S4_EVACC_PPC_P <- cbind(PPC ,S4_EVACC_PPC)
 P4 <- rbind(S4_EVACC_N_P, S4_EVACC_PPC_P)
-res4 <- t.test(accuracy~tDCS, data=P4, paired = TRUE, var.equal = FALSE, alternative = "less")
+res4 <- t.test(accuracy~tDCS, data=P4, paired = TRUE, var.equal = FALSE)
 
 S4_EVACC_N <- S4_EVACC_N[,
                          .(accuracy = mean(accuracy)),
@@ -292,7 +292,7 @@ SR_PPC <- rbind(SR_PPC, S5_EVACC_PPC[,
 S5_EVACC_N_P <- cbind(Sham ,S5_EVACC_N)
 S5_EVACC_PPC_P <- cbind(PPC ,S5_EVACC_PPC)
 P5 <- rbind(S5_EVACC_N_P, S5_EVACC_PPC_P)
-res5 <- t.test(accuracy~tDCS, data=P5, paired = TRUE, var.equal = FALSE, alternative = "less")
+res5 <- t.test(accuracy~tDCS, data=P5, paired = TRUE, var.equal = FALSE)
 
 S5_EVACC_N <- S5_EVACC_N[,
                          .(accuracy = mean(accuracy)),
@@ -316,7 +316,7 @@ SR_PPC <- rbind(SR_PPC, S6_EVACC_PPC[,
 S6_EVACC_N_P <- cbind(Sham ,S6_EVACC_N)
 S6_EVACC_PPC_P <- cbind(PPC ,S6_EVACC_PPC)
 P6 <- rbind(S6_EVACC_N_P, S6_EVACC_PPC_P)
-res6 <- t.test(accuracy~tDCS, data=P6, paired = TRUE, var.equal = FALSE, alternative = "less")
+res6 <- t.test(accuracy~tDCS, data=P6, paired = TRUE, var.equal = FALSE)
 
 S6_EVACC_N <- S6_EVACC_N[,
                          .(accuracy = mean(accuracy)),
@@ -328,12 +328,26 @@ session_bindEVACC_N <- rbind(session_bindEVACC_N, S6_EVACC_N)
 session_bindEVACC_PPC <- rbind(session_bindEVACC_PPC, S6_EVACC_PPC)
 
 
+# Before binding, divide accuracy value as a baseline(Block 1) value
 
-session_bindEVACC_N <- cbind(Sham, session_bindEVACC_N, SR_N)
-session_bindEVACC_PPC <- cbind(PPC, session_bindEVACC_PPC, SR_PPC)
+# SHAM
+session_bind_EVACC_N <- cbind(block, Sham, session_bindEVACC_N, SR_N)
+session_bind_EVACC_N_value <- session_bind_EVACC_N[,3]
+session_bind_EVACC_N_value <- session_bind_EVACC_N_value[,
+                                                       accuracy := mapply(accuracy, session_bind_EVACC_N_value[1,1], FUN = function(x, y) (x*100)/y)]
+session_bind_EVACC_N <- session_bind_EVACC_N[,!("accuracy"),]
+session_bind_EVACC_N <- cbind(session_bind_EVACC_N, session_bind_EVACC_N_value)
 
-session_bind_all_EVACC <- rbind(session_bindEVACC_N, session_bindEVACC_PPC)
-session_bind_all_EVACC <- cbind(block, session_bind_all_EVACC)
+# PPC
+session_bind_EVACC_PPC <- cbind(block, PPC, session_bindEVACC_PPC, SR_PPC)
+session_bind_EVACC_PPC_value <- session_bind_EVACC_PPC[,3]
+session_bind_EVACC_PPC_value <- session_bind_EVACC_PPC_value[,
+                                                           accuracy := mapply(accuracy, session_bind_EVACC_PPC_value[1,1], FUN = function(x, y) (x*100)/y)]
+session_bind_EVACC_PPC <- session_bind_EVACC_PPC[,!("accuracy"),]
+session_bind_EVACC_PPC <- cbind(session_bind_EVACC_PPC, session_bind_EVACC_PPC_value)
+
+# Bind the total value
+session_bind_all_EVACC <- rbind(session_bind_EVACC_N, session_bind_EVACC_PPC)
 
 #------------------------------------------------------------------------------#
 # ACC tendency between sessions (in graphs)
