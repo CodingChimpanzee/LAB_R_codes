@@ -1,5 +1,6 @@
 # See phasic alertness task accuracy in session period
 # In here, we see relative change between session
+# by using fold analysis
 
 #import library
 library(data.table)
@@ -378,6 +379,13 @@ session_bind_all <- rbind(session_bind_PACC_N, session_bind_PACC_PPC)
 #------------------------------------------------------------------------------#
 # ACC tendency between sessions (in graphs)
 
+# Before that, divide ACC_mean_diff value as a baseline(Block 1) value
+session_bind_value <- session_bind_all[,3] # Extract value from all
+session_bind_value <- session_bind_value[,
+                                          ACC_mean_diff := mapply(ACC_mean_diff, session_bind_value[1,1], FUN = function(x, y) (x*100)/y)]
+
+session_bind_all <- session_bind_all[,!("ACC_mean_diff"),]
+session_bind_all <- cbind(session_bind_all, session_bind_value)
 
 
 g1 <- ggplot(data = session_bind_all,

@@ -39,17 +39,19 @@ EVS_FA_N <- NULL
 #------------------------------------------------------------------------------#
 # For Session 1
 S1_EVFA_N <- NULL
+value_check <- NULL
 setwd("C:/Users/Biocomputing/Documents/CSV_DATA/Session_1_N")
 for(file in S1_N){
   temp <- fread(file, header=T)
   temp <- (temp)[(Correct=="SPACE")&(PracStimulus.ACC!=1),
                  .(FA = sum(PracStimulus.ACC+1)),
                  by = Trial]
-  temp <- sum(temp[2])/64
+  value_check <- cbind(value_check, temp)
+  temp <- sum(temp[,2])/64
   temp <- as.data.table(temp)
-  if (!is.na(temp[1])){
+#  if (!is.na(temp[1])){
     S1_EVFA_N <- rbind(S1_EVFA_N, temp)}
-}
+#}
 EVS_FA_N <- rbind(EVS_FA_N, S1_EVFA_N)
 
 S1_EVFA_PPC <- NULL
@@ -59,11 +61,11 @@ for(file in S1_PPC){
   temp <- (temp)[(Correct=="SPACE")&(PracStimulus.ACC!=1),
                  .(FA = sum(PracStimulus.ACC+1)),
                  by = Trial]
-  temp <- sum(temp[2])/64
+  temp <- sum(temp[,2])/64
   temp <- as.data.table(temp)
-  if (!is.na(temp[1])){
+#  if (!is.na(temp[1])){
   S1_EVFA_PPC <- rbind(S1_EVFA_PPC, temp)}
-}
+#}
 EVS_FA_PPC <- rbind(EVS_FA_PPC, S1_EVFA_PPC)
 #------------------------------------------------------------------------------#
 # For Session 2
@@ -74,12 +76,12 @@ for(file in S2_N){
   temp <- (temp)[(Correct=="SPACE")&(PracStimulus.ACC!=1),
                  .(FA = sum(PracStimulus.ACC+1)),
                  by = Trial]
-  temp <- sum(temp[2])/64
+  temp <- sum(temp[,2])/64
   temp <- as.data.table(temp)
   temp <- as.data.table(temp)
-  if (!is.na(temp[1])){
+#  if (!is.na(temp[1])){
     S2_EVFA_N <- rbind(S2_EVFA_N, temp)}
-}
+#}
 EVS_FA_N <- rbind(EVS_FA_N, S2_EVFA_N)
 
 S2_EVFA_PPC <- NULL
@@ -89,11 +91,11 @@ for(file in S2_PPC){
   temp <- (temp)[(Correct=="SPACE")&(PracStimulus.ACC!=1),
                  .(FA = sum(PracStimulus.ACC+1)),
                  by = Trial]
-  temp <- sum(temp[2])/64
+  temp <- sum(temp[,2])/64
   temp <- as.data.table(temp)
-  if (!is.na(temp[1])){
+#  if (!is.na(temp[1])){
     S2_EVFA_PPC <- rbind(S2_EVFA_PPC, temp)}
-}
+#}
 EVS_FA_PPC <- rbind(EVS_FA_PPC, S2_EVFA_PPC)
 #------------------------------------------------------------------------------#
 # For Session 3
@@ -104,11 +106,11 @@ for(file in S3_N){
   temp <- (temp)[(Correct=="SPACE")&(PracStimulus.ACC!=1),
                  .(FA = sum(PracStimulus.ACC+1)),
                  by = Trial]
-  temp <- sum(temp[2])/64
+  temp <- sum(temp[,2])/64
   temp <- as.data.table(temp)
-  if (!is.na(temp[1])){
+#  if (!is.na(temp[1])){
     S3_EVFA_N <- rbind(S3_EVFA_N, temp)}
-}
+#}
 EVS_FA_N <- rbind(EVS_FA_N, S3_EVFA_N)
 
 S3_EVFA_PPC <- NULL
@@ -118,11 +120,11 @@ for(file in S3_PPC){
   temp <- (temp)[(Correct=="SPACE")&(PracStimulus.ACC!=1),
                  .(FA = sum(PracStimulus.ACC+1)),
                  by = Trial]
-  temp <- sum(temp[2])/64
+  temp <- sum(temp[,2])/64
   temp <- as.data.table(temp)
-  if (!is.na(temp[1])){
+#  if (!is.na(temp[1])){
     S3_EVFA_PPC <- rbind(S3_EVFA_PPC, temp)}
-}
+#}
 EVS_FA_PPC <- rbind(EVS_FA_PPC, S3_EVFA_PPC)
 #------------------------------------------------------------------------------#
 # For Session 4
@@ -133,11 +135,11 @@ for(file in S4_N){
   temp <- (temp)[(Correct=="SPACE")&(PracStimulus.ACC!=1),
                  .(FA = sum(PracStimulus.ACC+1)),
                  by = Trial]
-  temp <- sum(temp[2])/64
+  temp <- sum(temp[,2])/64
   temp <- as.data.table(temp)
-  if (!is.na(temp[1])){
+#  if (!is.na(temp[1])){
     S4_EVFA_N <- rbind(S4_EVFA_N, temp)}
-}
+#}
 EVS_FA_N <- rbind(EVS_FA_N, S4_EVFA_N)
 
 S4_EVFA_PPC <- NULL
@@ -147,11 +149,11 @@ for(file in S4_PPC){
   temp <- (temp)[(Correct=="SPACE")&(PracStimulus.ACC!=1),
                  .(FA = sum(PracStimulus.ACC+1)),
                  by = Trial]
-  temp <- sum(temp[2])/64
+  temp <- sum(temp[,2])/64
   temp <- as.data.table(temp)
-  if (!is.na(temp[1])){
+#  if (!is.na(temp[1])){
     S4_EVFA_PPC <- rbind(S4_EVFA_PPC, temp)}
-}
+#}
 EVS_FA_PPC <- rbind(EVS_FA_PPC, S4_EVFA_PPC)
 #------------------------------------------------------------------------------#
 # For Session 5
@@ -162,11 +164,11 @@ for(file in S5_N){
   temp <- (temp)[(Correct=="SPACE")&(PracStimulus.ACC!=1),
                  .(FA = sum(PracStimulus.ACC+1)),
                  by = Trial]
-  temp <- sum(temp[2])/64
+  temp <- sum(temp[,2])/64
   temp <- as.data.table(temp)
-  if (!is.na(temp[1])){
+#  if (!is.na(temp[1])){
     S5_EVFA_N <- rbind(S5_EVFA_N, temp)}
-}
+#}
 EVS_FA_N <- rbind(EVS_FA_N, S5_EVFA_N)
 
 S5_EVFA_PPC <- NULL
@@ -176,11 +178,11 @@ for(file in S5_PPC){
   temp <- (temp)[(Correct=="SPACE")&(PracStimulus.ACC!=1),
                  .(FA = sum(PracStimulus.ACC+1)),
                  by = Trial]
-  temp <- sum(temp[2])/64
+  temp <- sum(temp[,2])/64
   temp <- as.data.table(temp)
-  if (!is.na(temp[1])){
+#  if (!is.na(temp[1])){
     S5_EVFA_PPC <- rbind(S5_EVFA_PPC, temp)}
-}
+#}
 EVS_FA_PPC <- rbind(EVS_FA_PPC, S5_EVFA_PPC)
 #------------------------------------------------------------------------------#
 # For Session 6
@@ -191,11 +193,11 @@ for(file in S6_N){
   temp <- (temp)[(Correct=="SPACE")&(PracStimulus.ACC!=1),
                  .(FA = sum(PracStimulus.ACC+1)),
                  by = Trial]
-  temp <- sum(temp[2])/64
+  temp <- sum(temp[,2])/64
   temp <- as.data.table(temp)
-  if (!is.na(temp[1])){
+#  if (!is.na(temp[1])){
     S6_EVFA_N <- rbind(S6_EVFA_N, temp)}
-}
+#}
 EVS_FA_N <- rbind(EVS_FA_N, S6_EVFA_N)
 
 S6_EVFA_PPC <- NULL
@@ -205,11 +207,11 @@ for(file in S6_PPC){
   temp <- (temp)[(Correct=="SPACE")&(PracStimulus.ACC!=1),
                  .(FA = sum(PracStimulus.ACC+1)),
                  by = Trial]
-  temp <- sum(temp[2])/64
+  temp <- sum(temp[,2])/64
   temp <- as.data.table(temp)
-  if (!is.na(temp[1])){
+#  if (!is.na(temp[1])){
     S6_EVFA_PPC <- rbind(S6_EVFA_PPC, temp)}
-}
+#}
 EVS_FA_PPC <- rbind(EVS_FA_PPC, S6_EVFA_PPC)
 
 #------------------------------------------------------------------------------#
@@ -218,6 +220,21 @@ session_bindEVFA_N <- NULL
 session_bindEVFA_PPC <- NULL
 SR_N <- NULL
 SR_PPC <- NULL
+
+# Put zero in na value rows in all SX_EVFA_N(PPC)
+S1_EVFA_N[is.na(S1_EVFA_N)] <- 0
+S1_EVFA_PPC[is.na(S1_EVFA_PPC)] <- 0
+S2_EVFA_N[is.na(S2_EVFA_N)] <- 0
+S2_EVFA_PPC[is.na(S2_EVFA_PPC)] <- 0
+S3_EVFA_N[is.na(S3_EVFA_N)] <- 0
+S3_EVFA_PPC[is.na(S3_EVFA_PPC)] <- 0
+S4_EVFA_N[is.na(S4_EVFA_N)] <- 0
+S4_EVFA_PPC[is.na(S4_EVFA_PPC)] <- 0
+S5_EVFA_N[is.na(S5_EVFA_N)] <- 0
+S5_EVFA_PPC[is.na(S5_EVFA_PPC)] <- 0
+S6_EVFA_N[is.na(S6_EVFA_N)] <- 0
+S6_EVFA_PPC[is.na(S6_EVFA_PPC)] <- 0
+S1_EVFA_PPC
 
 #------------------------------------------------------------------------------#
 # For Session 1
@@ -232,13 +249,13 @@ SR_PPC <- rbind(SR_PPC, S1_EVFA_PPC[,
 S1_EVFA_N_P <- cbind(Sham ,S1_EVFA_N)
 S1_EVFA_PPC_P <- cbind(PPC ,S1_EVFA_PPC)
 P1 <- rbind(S1_EVFA_N_P, S1_EVFA_PPC_P)
-res1 <- t.test(temp~tDCS, data=P1, var.equal = FALSE, alternative = "less")
+res1 <- t.test(temp~tDCS, data=P1, var.equal = FALSE)
 
 S1_EVFA_N <- S1_EVFA_N[,
                          .(FA = sum(temp)/11),
 ]
 S1_EVFA_PPC <- S1_EVFA_PPC[,
-                             .(FA = sum(temp)),
+                             .(FA = sum(temp)/11),
 ]
 session_bindEVFA_N <- rbind(session_bindEVFA_N, S1_EVFA_N)
 session_bindEVFA_PPC <- rbind(session_bindEVFA_PPC, S1_EVFA_PPC)
@@ -256,7 +273,7 @@ SR_PPC <- rbind(SR_PPC, S2_EVFA_PPC[,
 S2_EVFA_N_P <- cbind(Sham ,S2_EVFA_N)
 S2_EVFA_PPC_P <- cbind(PPC ,S2_EVFA_PPC)
 P2 <- rbind(S2_EVFA_N_P, S2_EVFA_PPC_P)
-res2 <- t.test(temp~tDCS, data=P2, var.equal = FALSE, alternative = "less")
+res2 <- t.test(temp~tDCS, data=P2, var.equal = FALSE)
 
 S2_EVFA_N <- S2_EVFA_N[,
                          .(FA = sum(temp)/11),
@@ -280,7 +297,7 @@ SR_PPC <- rbind(SR_PPC, S3_EVFA_PPC[,
 S3_EVFA_N_P <- cbind(Sham ,S3_EVFA_N)
 S3_EVFA_PPC_P <- cbind(PPC ,S3_EVFA_PPC)
 P3 <- rbind(S3_EVFA_N_P, S3_EVFA_PPC_P)
-res3 <- t.test(temp~tDCS, data=P3, var.equal = FALSE, alternative = "less")
+res3 <- t.test(temp~tDCS, data=P3, var.equal = FALSE)
 
 S3_EVFA_N <- S3_EVFA_N[,
                          .(FA = sum(temp)/11),
@@ -304,7 +321,7 @@ SR_PPC <- rbind(SR_PPC, S4_EVFA_PPC[,
 S4_EVFA_N_P <- cbind(Sham ,S4_EVFA_N)
 S4_EVFA_PPC_P <- cbind(PPC ,S4_EVFA_PPC)
 P4 <- rbind(S4_EVFA_N_P, S4_EVFA_PPC_P)
-res4 <- t.test(temp~tDCS, data=P4, var.equal = FALSE, alternative = "less")
+res4 <- t.test(temp~tDCS, data=P4, var.equal = FALSE)
 
 S4_EVFA_N <- S4_EVFA_N[,
                          .(FA = sum(temp)/11),
@@ -328,7 +345,7 @@ SR_PPC <- rbind(SR_PPC, S5_EVFA_PPC[,
 S5_EVFA_N_P <- cbind(Sham ,S5_EVFA_N)
 S5_EVFA_PPC_P <- cbind(PPC ,S5_EVFA_PPC)
 P5 <- rbind(S5_EVFA_N_P, S5_EVFA_PPC_P)
-res5 <- t.test(temp~tDCS, data=P5, var.equal = FALSE, alternative = "less")
+res5 <- t.test(temp~tDCS, data=P5, var.equal = FALSE)
 
 S5_EVFA_N <- S5_EVFA_N[,
                          .(FA = sum(temp)/11),
@@ -352,7 +369,7 @@ SR_PPC <- rbind(SR_PPC, S6_EVFA_PPC[,
 S6_EVFA_N_P <- cbind(Sham ,S6_EVFA_N)
 S6_EVFA_PPC_P <- cbind(PPC ,S6_EVFA_PPC)
 P6 <- rbind(S6_EVFA_N_P, S6_EVFA_PPC_P)
-res6 <- t.test(temp~tDCS, data=P6, var.equal = FALSE, alternative = "less")
+res6 <- t.test(temp~tDCS, data=P6, var.equal = FALSE)
 
 S6_EVFA_N <- S6_EVFA_N[,
                          .(FA = sum(temp)/11),
@@ -380,7 +397,7 @@ g1 <- ggplot(data = session_bind_all_EVFA,
 g1 <- g1 + geom_errorbar(aes(ymin = FA-sr, ymax = FA+sr), width = 0.2) + geom_point(size = 3)
 g1 <- g1 + ggtitle("FA in Executive vigilance task") + theme(plot.title = element_text(hjust=0.5))
 #g1 <- g1 + annotate(geom="text", x=3.2, y=0.98, label="**", size = 10, colour = "red") + annotate(geom="text", x=3.2, y=0.91, label="**", size = 10, colour = "red")
-#g1 <- g1 + annotate(geom="text", x=1.1, y=0.97, label="*", size = 10) + annotate(geom="text", x=1.1, y=0.92, label="*", size = 10)
+g1 <- g1 + annotate(geom="text", x=3.1, y=0.021, label="*", size = 10) + annotate(geom="text", x=3.1, y=0.005, label="*", size = 10)
 plot(g1)
 
 # P value based on student paired t-test
