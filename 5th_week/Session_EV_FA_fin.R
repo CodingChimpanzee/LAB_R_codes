@@ -360,7 +360,7 @@ g1 <- ggplot(data = session_bind_all_EVFA,
              aes(x = Blocks, y = FA, group = tDCS, color = tDCS)) + geom_line(size=1)
 g1 <- g1 + geom_errorbar(aes(ymin = FA-sr, ymax = FA+sr), width = 0.2) + geom_point(size = 3)
 g1 <- g1 + ggtitle("FA in Executive vigilance task") + theme(plot.title = element_text(hjust=0.5))
-#g1 <- g1 + annotate(geom="text", x=3.2, y=0.98, label="**", size = 10, colour = "red") + annotate(geom="text", x=3.2, y=0.91, label="**", size = 10, colour = "red")
+# g1 <- g1 + ylim(0, 0.12)
 g1 <- g1 + annotate(geom="text", x=3.1, y=0.021, label="*", size = 10) + annotate(geom="text", x=3.1, y=0.005, label="*", size = 10)
 plot(g1)
 

@@ -209,16 +209,28 @@ session_bindEVACC_PPC <- rbind(session_bindEVACC_PPC, S1_EVACC_PPC)
 
 #------------------------------------------------------------------------------#
 # For Session 2
-SR_N <- rbind(SR_N, S2_EVACC_N[,
+
+# SHAM
+S2_EVACC_N_value <- S2_EVACC_N[,1]
+S2_EVACC_N_value <- S2_EVACC_N_value[,
+                                   accuracy := mapply(accuracy, session_bindEVACC_N[1,1], FUN = function(x, y) (x*100)/y)]
+
+# PPC
+S2_EVACC_PPC_value <- S2_EVACC_PPC[,1]
+S2_EVACC_PPC_value <- S2_EVACC_PPC_value[,
+                                       accuracy := mapply(accuracy, session_bindEVACC_PPC[1,1], FUN = function(x, y) (x*100)/y)]
+
+
+SR_N <- rbind(SR_N, S2_EVACC_N_value[,
                                .(sr = sd(accuracy)/sqrt(11)),
 ])
-SR_PPC <- rbind(SR_PPC, S2_EVACC_PPC[,
+SR_PPC <- rbind(SR_PPC, S2_EVACC_PPC_value[,
                                      .(sr = sd(accuracy)/sqrt(11)),
 ])
 
 # P value
-S2_EVACC_N_P <- cbind(Sham ,S2_EVACC_N)
-S2_EVACC_PPC_P <- cbind(PPC ,S2_EVACC_PPC)
+S2_EVACC_N_P <- cbind(Sham ,S2_EVACC_N_value)
+S2_EVACC_PPC_P <- cbind(PPC ,S2_EVACC_PPC_value)
 P2 <- rbind(S2_EVACC_N_P, S2_EVACC_PPC_P)
 res2 <- t.test(accuracy~tDCS, data=P2, paired = TRUE, var.equal = FALSE)
 
@@ -233,16 +245,27 @@ session_bindEVACC_PPC <- rbind(session_bindEVACC_PPC, S2_EVACC_PPC)
 
 #------------------------------------------------------------------------------#
 # For Session 3
-SR_N <- rbind(SR_N, S3_EVACC_N[,
+
+# SHAM
+S3_EVACC_N_value <- S3_EVACC_N[,1]
+S3_EVACC_N_value <- S3_EVACC_N_value[,
+                                     accuracy := mapply(accuracy, session_bindEVACC_N[1,1], FUN = function(x, y) (x*100)/y)]
+
+# PPC
+S3_EVACC_PPC_value <- S3_EVACC_PPC[,1]
+S3_EVACC_PPC_value <- S3_EVACC_PPC_value[,
+                                         accuracy := mapply(accuracy, session_bindEVACC_PPC[1,1], FUN = function(x, y) (x*100)/y)]
+
+SR_N <- rbind(SR_N, S3_EVACC_N_value[,
                                .(sr = sd(accuracy)/sqrt(11)),
 ])
-SR_PPC <- rbind(SR_PPC, S3_EVACC_PPC[,
+SR_PPC <- rbind(SR_PPC, S3_EVACC_PPC_value[,
                                      .(sr = sd(accuracy)/sqrt(11)),
 ])
 
 # P value
-S3_EVACC_N_P <- cbind(Sham ,S3_EVACC_N)
-S3_EVACC_PPC_P <- cbind(PPC ,S3_EVACC_PPC)
+S3_EVACC_N_P <- cbind(Sham ,S3_EVACC_N_value)
+S3_EVACC_PPC_P <- cbind(PPC ,S3_EVACC_PPC_value)
 P3 <- rbind(S3_EVACC_N_P, S3_EVACC_PPC_P)
 res3 <- t.test(accuracy~tDCS, data=P3, paired = TRUE, var.equal = FALSE)
 
@@ -257,16 +280,27 @@ session_bindEVACC_PPC <- rbind(session_bindEVACC_PPC, S3_EVACC_PPC)
 
 #------------------------------------------------------------------------------#
 # For Session 4
-SR_N <- rbind(SR_N, S4_EVACC_N[,
+
+# SHAM
+S4_EVACC_N_value <- S4_EVACC_N[,1]
+S4_EVACC_N_value <- S4_EVACC_N_value[,
+                                     accuracy := mapply(accuracy, session_bindEVACC_N[1,1], FUN = function(x, y) (x*100)/y)]
+
+# PPC
+S4_EVACC_PPC_value <- S4_EVACC_PPC[,1]
+S4_EVACC_PPC_value <- S4_EVACC_PPC_value[,
+                                         accuracy := mapply(accuracy, session_bindEVACC_PPC[1,1], FUN = function(x, y) (x*100)/y)]
+
+SR_N <- rbind(SR_N, S4_EVACC_N_value[,
                                .(sr = sd(accuracy)/sqrt(11)),
 ])
-SR_PPC <- rbind(SR_PPC, S4_EVACC_PPC[,
+SR_PPC <- rbind(SR_PPC, S4_EVACC_PPC_value[,
                                      .(sr = sd(accuracy)/sqrt(11)),
 ])
 
 # P value
-S4_EVACC_N_P <- cbind(Sham ,S4_EVACC_N)
-S4_EVACC_PPC_P <- cbind(PPC ,S4_EVACC_PPC)
+S4_EVACC_N_P <- cbind(Sham ,S4_EVACC_N_value)
+S4_EVACC_PPC_P <- cbind(PPC ,S4_EVACC_PPC_value)
 P4 <- rbind(S4_EVACC_N_P, S4_EVACC_PPC_P)
 res4 <- t.test(accuracy~tDCS, data=P4, paired = TRUE, var.equal = FALSE)
 
@@ -281,16 +315,27 @@ session_bindEVACC_PPC <- rbind(session_bindEVACC_PPC, S4_EVACC_PPC)
 
 #------------------------------------------------------------------------------#
 # For Session 5
-SR_N <- rbind(SR_N, S5_EVACC_N[,
+
+# SHAM
+S5_EVACC_N_value <- S5_EVACC_N[,1]
+S5_EVACC_N_value <- S5_EVACC_N_value[,
+                                     accuracy := mapply(accuracy, session_bindEVACC_N[1,1], FUN = function(x, y) (x*100)/y)]
+
+# PPC
+S5_EVACC_PPC_value <- S5_EVACC_PPC[,1]
+S5_EVACC_PPC_value <- S5_EVACC_PPC_value[,
+                                         accuracy := mapply(accuracy, session_bindEVACC_PPC[1,1], FUN = function(x, y) (x*100)/y)]
+
+SR_N <- rbind(SR_N, S5_EVACC_N_value[,
                                .(sr = sd(accuracy)/sqrt(11)),
 ])
-SR_PPC <- rbind(SR_PPC, S5_EVACC_PPC[,
+SR_PPC <- rbind(SR_PPC, S5_EVACC_PPC_value[,
                                      .(sr = sd(accuracy)/sqrt(11)),
 ])
 
 # P value
-S5_EVACC_N_P <- cbind(Sham ,S5_EVACC_N)
-S5_EVACC_PPC_P <- cbind(PPC ,S5_EVACC_PPC)
+S5_EVACC_N_P <- cbind(Sham ,S5_EVACC_N_value)
+S5_EVACC_PPC_P <- cbind(PPC ,S5_EVACC_PPC_value)
 P5 <- rbind(S5_EVACC_N_P, S5_EVACC_PPC_P)
 res5 <- t.test(accuracy~tDCS, data=P5, paired = TRUE, var.equal = FALSE)
 
@@ -305,16 +350,27 @@ session_bindEVACC_PPC <- rbind(session_bindEVACC_PPC, S5_EVACC_PPC)
 
 #------------------------------------------------------------------------------#
 # For Session 6
-SR_N <- rbind(SR_N, S6_EVACC_N[,
+
+# SHAM
+S6_EVACC_N_value <- S6_EVACC_N[,1]
+S6_EVACC_N_value <- S6_EVACC_N_value[,
+                                     accuracy := mapply(accuracy, session_bindEVACC_N[1,1], FUN = function(x, y) (x*100)/y)]
+
+# PPC
+S6_EVACC_PPC_value <- S6_EVACC_PPC[,1]
+S6_EVACC_PPC_value <- S6_EVACC_PPC_value[,
+                                         accuracy := mapply(accuracy, session_bindEVACC_PPC[1,1], FUN = function(x, y) (x*100)/y)]
+
+SR_N <- rbind(SR_N, S6_EVACC_N_value[,
                                .(sr = sd(accuracy)/sqrt(11)),
 ])
-SR_PPC <- rbind(SR_PPC, S6_EVACC_PPC[,
+SR_PPC <- rbind(SR_PPC, S6_EVACC_PPC_value[,
                                      .(sr = sd(accuracy)/sqrt(11)),
 ])
 
 # P value
-S6_EVACC_N_P <- cbind(Sham ,S6_EVACC_N)
-S6_EVACC_PPC_P <- cbind(PPC ,S6_EVACC_PPC)
+S6_EVACC_N_P <- cbind(Sham ,S6_EVACC_N_value)
+S6_EVACC_PPC_P <- cbind(PPC ,S6_EVACC_PPC_value)
 P6 <- rbind(S6_EVACC_N_P, S6_EVACC_PPC_P)
 res6 <- t.test(accuracy~tDCS, data=P6, paired = TRUE, var.equal = FALSE)
 
@@ -354,11 +410,11 @@ session_bind_all_EVACC <- rbind(session_bind_EVACC_N, session_bind_EVACC_PPC)
 
 g1 <- ggplot(data = session_bind_all_EVACC,
              aes(x = Blocks, y = accuracy, group = tDCS, color = tDCS)) + geom_line(size=1)
-#g1 <- g1 + geom_errorbar(aes(ymin = accuracy-sr, ymax = accuracy+sr), width = 0.2) + geom_point(size = 3)
+g1 <- g1 + geom_errorbar(aes(ymin = accuracy-sr, ymax = accuracy+sr), width = 0.2)
 g1 <- g1 + geom_point(size=3)
 g1 <- g1 + ggtitle("Accuracy in Executive vigilance task") + theme(plot.title = element_text(hjust=0.5))
-#g1 <- g1 + annotate(geom="text", x=3.2, y=0.98, label="**", size = 10, colour = "red") + annotate(geom="text", x=3.2, y=0.91, label="**", size = 10, colour = "red")
-#g1 <- g1 + annotate(geom="text", x=1.1, y=0.97, label="*", size = 10) + annotate(geom="text", x=1.1, y=0.92, label="*", size = 10)
+g1 <- g1 + annotate(geom="text", x=3.2, y=106, label="**", size = 10, colour = "red") + annotate(geom="text", x=3.2, y=96, label="**", size = 10, colour = "red")
+g1 <- g1 + annotate(geom="text", x=5.2, y=102, label="*", size = 10, colour = "red") + annotate(geom="text", x=5.2, y=96.5, label="*", size = 10, colour = "red")
 plot(g1)
 
 # P value based on student paired t-test

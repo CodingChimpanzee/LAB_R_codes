@@ -236,7 +236,7 @@ S1_PACC_N_P <- cbind(Sham ,S1_PACC_N)
 S1_PACC_PPC_P <- cbind(PPC ,S1_PACC_PPC)
 P1 <- rbind(S1_PACC_N_P, S1_PACC_PPC_P)
 res1 <- t.test(ACC_mean_diff_each~tDCS, data=P1,
-               paired = TRUE, var.equal = FALSE, alternative = "less")
+               paired = TRUE, var.equal = FALSE)
 
 
 S1_PACC_N_diff <- S1_PACC_N[,lapply(.SD, mean),]
@@ -250,19 +250,30 @@ session_bind_PACC_PPC <- rbind(session_bind_PACC_PPC, S1_PACC_PPC_diff)
 #------------------------------------------------------------------------------#
 # For Session 2
 
-SR_N <- rbind(SR_N, S2_PACC_N[,
-                              .(sr = sd(ACC_mean_diff_each)/sqrt(11)),
-])
-SR_PPC <- rbind(SR_PPC, S2_PACC_PPC[,
+# SHAM
+S2_PACC_N_value <- S2_PACC_N[,1]
+S2_PACC_N_value <- S2_PACC_N_value[,
+                                   ACC_mean_diff_each := mapply(ACC_mean_diff_each, session_bind_PACC_N[1,1], FUN = function(x, y) (x*100)/y)]
+
+# PPC
+S2_PACC_PPC_value <- S2_PACC_PPC[,1]
+S2_PACC_PPC_value <- S2_PACC_PPC_value[,
+                                      ACC_mean_diff_each := mapply(ACC_mean_diff_each, session_bind_PACC_PPC[1,1], FUN = function(x, y) (x*100)/y)]
+
+
+SR_N <- rbind(SR_N, S2_PACC_N_value[,
                                     .(sr = sd(ACC_mean_diff_each)/sqrt(11)),
+])
+SR_PPC <- rbind(SR_PPC, S2_PACC_PPC_value[,
+                                          .(sr = sd(ACC_mean_diff_each)/sqrt(11)),
 ])
 
 # P value
-S2_PACC_N_P <- cbind(Sham ,S2_PACC_N)
-S2_PACC_PPC_P <- cbind(PPC ,S2_PACC_PPC)
+S2_PACC_N_P <- cbind(Sham ,S2_PACC_N_value)
+S2_PACC_PPC_P <- cbind(PPC ,S2_PACC_PPC_value)
 P2 <- rbind(S2_PACC_N_P, S2_PACC_PPC_P)
 res2 <- t.test(ACC_mean_diff_each~tDCS, data=P2,
-               paired = TRUE, var.equal = FALSE, alternative = "less")
+               paired = TRUE, var.equal = FALSE)
 
 S2_PACC_N_diff <- S2_PACC_N[,lapply(.SD, mean),]
 S2_PACC_PPC_diff <- S2_PACC_PPC[,lapply(.SD, mean),]
@@ -275,19 +286,29 @@ session_bind_PACC_PPC <- rbind(session_bind_PACC_PPC, S2_PACC_PPC_diff)
 #------------------------------------------------------------------------------#
 # For Session 3
 
-SR_N <- rbind(SR_N, S3_PACC_N[,
-                              .(sr = sd(ACC_mean_diff_each)/sqrt(11)),
-])
-SR_PPC <- rbind(SR_PPC, S3_PACC_PPC[,
+# SHAM
+S3_PACC_N_value <- S3_PACC_N[,1]
+S3_PACC_N_value <- S3_PACC_N_value[,
+                                   ACC_mean_diff_each := mapply(ACC_mean_diff_each, session_bind_PACC_N[1,1], FUN = function(x, y) (x*100)/y)]
+
+# PPC
+S3_PACC_PPC_value <- S3_PACC_PPC[,1]
+S3_PACC_PPC_value <- S3_PACC_PPC_value[,
+                                       ACC_mean_diff_each := mapply(ACC_mean_diff_each, session_bind_PACC_PPC[1,1], FUN = function(x, y) (x*100)/y)]
+
+SR_N <- rbind(SR_N, S3_PACC_N_value[,
                                     .(sr = sd(ACC_mean_diff_each)/sqrt(11)),
+])
+SR_PPC <- rbind(SR_PPC, S3_PACC_PPC_value[,
+                                          .(sr = sd(ACC_mean_diff_each)/sqrt(11)),
 ])
 
 # P value
-S3_PACC_N_P <- cbind(Sham ,S3_PACC_N)
-S3_PACC_PPC_P <- cbind(PPC ,S3_PACC_PPC)
+S3_PACC_N_P <- cbind(Sham ,S3_PACC_N_value)
+S3_PACC_PPC_P <- cbind(PPC ,S3_PACC_PPC_value)
 P3 <- rbind(S3_PACC_N_P, S3_PACC_PPC_P)
 res3 <- t.test(ACC_mean_diff_each~tDCS, data=P3, 
-               paired = TRUE, var.equal = FALSE, alternative = "less")
+               paired = TRUE, var.equal = FALSE)
 
 S3_PACC_N_diff <- S3_PACC_N[,lapply(.SD, mean),]
 S3_PACC_PPC_diff <- S3_PACC_PPC[,lapply(.SD, mean),]
@@ -300,19 +321,29 @@ session_bind_PACC_PPC <- rbind(session_bind_PACC_PPC, S3_PACC_PPC_diff)
 #------------------------------------------------------------------------------#
 # For Session 4
 
-SR_N <- rbind(SR_N, S4_PACC_N[,
+# SHAM
+S4_PACC_N_value <- S4_PACC_N[,1]
+S4_PACC_N_value <- S4_PACC_N_value[,
+                                   ACC_mean_diff_each := mapply(ACC_mean_diff_each, session_bind_PACC_N[1,1], FUN = function(x, y) (x*100)/y)]
+
+# PPC
+S4_PACC_PPC_value <- S4_PACC_PPC[,1]
+S4_PACC_PPC_value <- S4_PACC_PPC_value[,
+                                       ACC_mean_diff_each := mapply(ACC_mean_diff_each, session_bind_PACC_PPC[1,1], FUN = function(x, y) (x*100)/y)]
+
+SR_N <- rbind(SR_N, S4_PACC_N_value[,
                               .(sr = sd(ACC_mean_diff_each)/sqrt(11)),
 ])
-SR_PPC <- rbind(SR_PPC, S4_PACC_PPC[,
+SR_PPC <- rbind(SR_PPC, S4_PACC_PPC_value[,
                                     .(sr = sd(ACC_mean_diff_each)/sqrt(11)),
 ])
 
 # P value
-S4_PACC_N_P <- cbind(Sham ,S4_PACC_N)
-S4_PACC_PPC_P <- cbind(PPC ,S4_PACC_PPC)
+S4_PACC_N_P <- cbind(Sham ,S4_PACC_N_value)
+S4_PACC_PPC_P <- cbind(PPC ,S4_PACC_PPC_value)
 P4 <- rbind(S4_PACC_N_P, S4_PACC_PPC_P)
 res4 <- t.test(ACC_mean_diff_each~tDCS, data=P4, 
-               paired = TRUE, var.equal = FALSE, alternative = "less")
+               paired = TRUE, var.equal = FALSE)
 
 S4_PACC_N_diff <- S4_PACC_N[,lapply(.SD, mean),]
 S4_PACC_PPC_diff <- S4_PACC_PPC[,lapply(.SD, mean),]
@@ -325,19 +356,29 @@ session_bind_PACC_PPC <- rbind(session_bind_PACC_PPC, S4_PACC_PPC_diff)
 #------------------------------------------------------------------------------#
 # For Session 5
 
-SR_N <- rbind(SR_N, S5_PACC_N[,
+# SHAM
+S5_PACC_N_value <- S5_PACC_N[,1]
+S5_PACC_N_value <- S5_PACC_N_value[,
+                                   ACC_mean_diff_each := mapply(ACC_mean_diff_each, session_bind_PACC_N[1,1], FUN = function(x, y) (x*100)/y)]
+
+# PPC
+S5_PACC_PPC_value <- S5_PACC_PPC[,1]
+S5_PACC_PPC_value <- S5_PACC_PPC_value[,
+                                       ACC_mean_diff_each := mapply(ACC_mean_diff_each, session_bind_PACC_PPC[1,1], FUN = function(x, y) (x*100)/y)]
+
+SR_N <- rbind(SR_N, S5_PACC_N_value[,
                               .(sr = sd(ACC_mean_diff_each)/sqrt(11)),
 ])
-SR_PPC <- rbind(SR_PPC, S5_PACC_PPC[,
+SR_PPC <- rbind(SR_PPC, S5_PACC_PPC_value[,
                                     .(sr = sd(ACC_mean_diff_each)/sqrt(11)),
 ])
 
 # P value
-S5_PACC_N_P <- cbind(Sham ,S5_PACC_N)
-S5_PACC_PPC_P <- cbind(PPC ,S5_PACC_PPC)
+S5_PACC_N_P <- cbind(Sham ,S5_PACC_N_value)
+S5_PACC_PPC_P <- cbind(PPC ,S5_PACC_PPC_value)
 P5 <- rbind(S5_PACC_N_P, S5_PACC_PPC_P)
 res5 <- t.test(ACC_mean_diff_each~tDCS, data=P5,
-               paired = TRUE, var.equal = FALSE, alternative = "less")
+               paired = TRUE, var.equal = FALSE)
 
 S5_PACC_N_diff <- S5_PACC_N[,lapply(.SD, mean),]
 S5_PACC_PPC_diff <- S5_PACC_PPC[,lapply(.SD, mean),]
@@ -350,19 +391,29 @@ session_bind_PACC_PPC <- rbind(session_bind_PACC_PPC, S5_PACC_PPC_diff)
 #------------------------------------------------------------------------------#
 # For Session 6
 
-SR_N <- rbind(SR_N, S6_PACC_N[,
+# SHAM
+S6_PACC_N_value <- S6_PACC_N[,1]
+S6_PACC_N_value <- S6_PACC_N_value[,
+                                   ACC_mean_diff_each := mapply(ACC_mean_diff_each, session_bind_PACC_N[1,1], FUN = function(x, y) (x*100)/y)]
+
+# PPC
+S6_PACC_PPC_value <- S6_PACC_PPC[,1]
+S6_PACC_PPC_value <- S6_PACC_PPC_value[,
+                                       ACC_mean_diff_each := mapply(ACC_mean_diff_each, session_bind_PACC_PPC[1,1], FUN = function(x, y) (x*100)/y)]
+
+SR_N <- rbind(SR_N, S6_PACC_N_value[,
                               .(sr = sd(ACC_mean_diff_each)/sqrt(11)),
 ])
-SR_PPC <- rbind(SR_PPC, S6_PACC_PPC[,
+SR_PPC <- rbind(SR_PPC, S6_PACC_PPC_value[,
                                     .(sr = sd(ACC_mean_diff_each)/sqrt(11)),
 ])
 
 # P value
-S6_PACC_N_P <- cbind(Sham ,S6_PACC_N)
-S6_PACC_PPC_P <- cbind(PPC ,S6_PACC_PPC)
+S6_PACC_N_P <- cbind(Sham ,S6_PACC_N_value)
+S6_PACC_PPC_P <- cbind(PPC ,S6_PACC_PPC_value)
 P6 <- rbind(S6_PACC_N_P, S6_PACC_PPC_P)
 res6 <- t.test(ACC_mean_diff_each~tDCS, data=P6,
-               paired = TRUE, var.equal = FALSE, alternative = "less")
+               paired = TRUE, var.equal = FALSE)
 
 S6_PACC_N_diff <- S6_PACC_N[,lapply(.SD, mean),]
 S6_PACC_PPC_diff <- S6_PACC_PPC[,lapply(.SD, mean),]
@@ -401,9 +452,9 @@ session_bind_all <- rbind(session_bind_PACC_N, session_bind_PACC_PPC)
 g1 <- ggplot(data = session_bind_all,
              aes(x = Blocks, y = ACC_mean_diff, group = tDCS, color = tDCS)) + geom_line(size=1)
 g1 <- g1 + geom_point(size=3)
-#g1 <- g1 + geom_errorbar(aes(ymin = ACC_mean_diff-sr, ymax = ACC_mean_diff+sr), width = 0.2) + geom_point(size = 3)
+g1 <- g1 + geom_errorbar(aes(ymin = ACC_mean_diff-sr, ymax = ACC_mean_diff+sr), width = 0.2)
 g1 <- g1 + ggtitle("Accuracy difference in phasic alertness task") + theme(plot.title = element_text(hjust=0.5))
-#g1 <- g1 + annotate(geom="text", x=1.2, y=0.04, label="**", size = 10, colour = "red") + annotate(geom="text", x=1.2, y=0.01, label="**", size = 10, colour = "red")
+g1 <- g1 + annotate(geom="text", x=6.2, y=250, label="*", size = 10) + annotate(geom="text", x=6.2, y=60, label="*", size = 10)
 #g1 <- g1 + scale_y_continuous(lables = scales::percent)
 plot(g1)
 
