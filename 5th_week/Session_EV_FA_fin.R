@@ -28,13 +28,7 @@ S5_PPC <- list.files("CSV_DATA/Session_5_PPC")
 S6_N <- list.files("CSV_DATA/Session_6_N")
 S6_PPC <- list.files("CSV_DATA/Session_6_PPC")
 
-#Executive Vigilance tendency
-
-#PPC tDCS EV FA value in Session
-EVS_FA_PPC <- NULL
-
-#Sham tDCS EV FA value in Session
-EVS_FA_N <- NULL
+#Executive Vigilance tendency (False Alarms)
 
 #------------------------------------------------------------------------------#
 # For Session 1
@@ -49,10 +43,7 @@ for(file in S1_N){
   value_check <- cbind(value_check, temp)
   temp <- sum(temp[,2])/64
   temp <- as.data.table(temp)
-#  if (!is.na(temp[1])){
-    S1_EVFA_N <- rbind(S1_EVFA_N, temp)}
-#}
-EVS_FA_N <- rbind(EVS_FA_N, S1_EVFA_N)
+  S1_EVFA_N <- rbind(S1_EVFA_N, temp)}
 
 S1_EVFA_PPC <- NULL
 setwd("C:/Users/Biocomputing/Documents/CSV_DATA/Session_1_PPC")
@@ -63,10 +54,8 @@ for(file in S1_PPC){
                  by = Trial]
   temp <- sum(temp[,2])/64
   temp <- as.data.table(temp)
-#  if (!is.na(temp[1])){
   S1_EVFA_PPC <- rbind(S1_EVFA_PPC, temp)}
-#}
-EVS_FA_PPC <- rbind(EVS_FA_PPC, S1_EVFA_PPC)
+
 #------------------------------------------------------------------------------#
 # For Session 2
 S2_EVFA_N <- NULL
@@ -79,10 +68,8 @@ for(file in S2_N){
   temp <- sum(temp[,2])/64
   temp <- as.data.table(temp)
   temp <- as.data.table(temp)
-#  if (!is.na(temp[1])){
-    S2_EVFA_N <- rbind(S2_EVFA_N, temp)}
-#}
-EVS_FA_N <- rbind(EVS_FA_N, S2_EVFA_N)
+  S2_EVFA_N <- rbind(S2_EVFA_N, temp)}
+
 
 S2_EVFA_PPC <- NULL
 setwd("C:/Users/Biocomputing/Documents/CSV_DATA/Session_2_PPC")
@@ -93,10 +80,8 @@ for(file in S2_PPC){
                  by = Trial]
   temp <- sum(temp[,2])/64
   temp <- as.data.table(temp)
-#  if (!is.na(temp[1])){
-    S2_EVFA_PPC <- rbind(S2_EVFA_PPC, temp)}
-#}
-EVS_FA_PPC <- rbind(EVS_FA_PPC, S2_EVFA_PPC)
+  S2_EVFA_PPC <- rbind(S2_EVFA_PPC, temp)}
+
 #------------------------------------------------------------------------------#
 # For Session 3
 S3_EVFA_N <- NULL
@@ -108,10 +93,7 @@ for(file in S3_N){
                  by = Trial]
   temp <- sum(temp[,2])/64
   temp <- as.data.table(temp)
-#  if (!is.na(temp[1])){
-    S3_EVFA_N <- rbind(S3_EVFA_N, temp)}
-#}
-EVS_FA_N <- rbind(EVS_FA_N, S3_EVFA_N)
+  S3_EVFA_N <- rbind(S3_EVFA_N, temp)}
 
 S3_EVFA_PPC <- NULL
 setwd("C:/Users/Biocomputing/Documents/CSV_DATA/Session_3_PPC")
@@ -122,10 +104,8 @@ for(file in S3_PPC){
                  by = Trial]
   temp <- sum(temp[,2])/64
   temp <- as.data.table(temp)
-#  if (!is.na(temp[1])){
-    S3_EVFA_PPC <- rbind(S3_EVFA_PPC, temp)}
-#}
-EVS_FA_PPC <- rbind(EVS_FA_PPC, S3_EVFA_PPC)
+  S3_EVFA_PPC <- rbind(S3_EVFA_PPC, temp)}
+
 #------------------------------------------------------------------------------#
 # For Session 4
 S4_EVFA_N <- NULL
@@ -137,10 +117,7 @@ for(file in S4_N){
                  by = Trial]
   temp <- sum(temp[,2])/64
   temp <- as.data.table(temp)
-#  if (!is.na(temp[1])){
-    S4_EVFA_N <- rbind(S4_EVFA_N, temp)}
-#}
-EVS_FA_N <- rbind(EVS_FA_N, S4_EVFA_N)
+  S4_EVFA_N <- rbind(S4_EVFA_N, temp)}
 
 S4_EVFA_PPC <- NULL
 setwd("C:/Users/Biocomputing/Documents/CSV_DATA/Session_4_PPC")
@@ -151,10 +128,8 @@ for(file in S4_PPC){
                  by = Trial]
   temp <- sum(temp[,2])/64
   temp <- as.data.table(temp)
-#  if (!is.na(temp[1])){
-    S4_EVFA_PPC <- rbind(S4_EVFA_PPC, temp)}
-#}
-EVS_FA_PPC <- rbind(EVS_FA_PPC, S4_EVFA_PPC)
+  S4_EVFA_PPC <- rbind(S4_EVFA_PPC, temp)}
+
 #------------------------------------------------------------------------------#
 # For Session 5
 S5_EVFA_N <- NULL
@@ -166,10 +141,7 @@ for(file in S5_N){
                  by = Trial]
   temp <- sum(temp[,2])/64
   temp <- as.data.table(temp)
-#  if (!is.na(temp[1])){
-    S5_EVFA_N <- rbind(S5_EVFA_N, temp)}
-#}
-EVS_FA_N <- rbind(EVS_FA_N, S5_EVFA_N)
+  S5_EVFA_N <- rbind(S5_EVFA_N, temp)}
 
 S5_EVFA_PPC <- NULL
 setwd("C:/Users/Biocomputing/Documents/CSV_DATA/Session_5_PPC")
@@ -180,10 +152,8 @@ for(file in S5_PPC){
                  by = Trial]
   temp <- sum(temp[,2])/64
   temp <- as.data.table(temp)
-#  if (!is.na(temp[1])){
-    S5_EVFA_PPC <- rbind(S5_EVFA_PPC, temp)}
-#}
-EVS_FA_PPC <- rbind(EVS_FA_PPC, S5_EVFA_PPC)
+  S5_EVFA_PPC <- rbind(S5_EVFA_PPC, temp)}
+
 #------------------------------------------------------------------------------#
 # For Session 6
 S6_EVFA_N <- NULL
@@ -195,10 +165,7 @@ for(file in S6_N){
                  by = Trial]
   temp <- sum(temp[,2])/64
   temp <- as.data.table(temp)
-#  if (!is.na(temp[1])){
-    S6_EVFA_N <- rbind(S6_EVFA_N, temp)}
-#}
-EVS_FA_N <- rbind(EVS_FA_N, S6_EVFA_N)
+  S6_EVFA_N <- rbind(S6_EVFA_N, temp)}
 
 S6_EVFA_PPC <- NULL
 setwd("C:/Users/Biocomputing/Documents/CSV_DATA/Session_6_PPC")
@@ -209,10 +176,7 @@ for(file in S6_PPC){
                  by = Trial]
   temp <- sum(temp[,2])/64
   temp <- as.data.table(temp)
-#  if (!is.na(temp[1])){
-    S6_EVFA_PPC <- rbind(S6_EVFA_PPC, temp)}
-#}
-EVS_FA_PPC <- rbind(EVS_FA_PPC, S6_EVFA_PPC)
+  S6_EVFA_PPC <- rbind(S6_EVFA_PPC, temp)}
 
 #------------------------------------------------------------------------------#
 # FA tendency by sessions
