@@ -378,20 +378,29 @@ session_bind_warn <- session_bind_warn[,!"Warnsound"]
 PARTNa <- aov(Blocks~mean_RT, data=session_bind_mute)
 PARTPCCa <- aov(Blocks~mean_RT, data=session_bind_warn)
 
+session_bind_mute <- setnames(session_bind_mute, "mean_RT", "Response_time_mean")
+session_bind_mute <- setnames(session_bind_mute, "Blocks", "Sessions")
+session_bind_warn <- setnames(session_bind_warn, "mean_RT", "Response_time_mean")
+session_bind_warn <- setnames(session_bind_warn, "Blocks", "Sessions")
+
 # RT tendency between sessions (in sham, PPC tDCS) (in graphs)
 g1 <- ggplot(data = session_bind_mute,
-            aes(x = Blocks, y = mean_RT, group = tDCS, color = tDCS)) + geom_line(size=1)
-g1 <- g1 + geom_errorbar(aes(ymin = mean_RT-sr, ymax = mean_RT+sr), width = 0.2) + geom_point(size = 3)
-g1 <- g1 + ggtitle("RT in PA task(mute)") + theme(plot.title = element_text(hjust=0.5))
-g1 <- g1 + annotate(geom="text", x=6, y=570, label="p=0.0891")
+            aes(x = Sessions, y = Response_time_mean, group = tDCS, color = tDCS)) + geom_line(size=1)
+g1 <- g1 + geom_errorbar(aes(ymin = Response_time_mean-sr, ymax = Response_time_mean+sr), width = 0.2) + geom_point(size = 3)
+g1 <- g1 + ggtitle("Response time in phasic alertness task(mute)") + theme(plot.title = element_text(hjust=0.5))
+#g1 <- g1 + annotate(geom="text", x=6, y=570, label="p=0.0891")
+g1 <- g1 + ylim(440, 580)
+g1 <- g1 + theme(axis.title = element_text(size=20)) + theme(plot.title = element_text(size=20))
 plot(g1)
 
 
 g2 <- ggplot(data = session_bind_warn,
-             aes(x = Blocks, y = mean_RT, group = tDCS, color = tDCS)) + geom_line(size=1)
-g2 <- g2 + geom_errorbar(aes(ymin = mean_RT-sr, ymax = mean_RT+sr), width = 0.2) + geom_point(size = 3)
-g2 <- g2 + ggtitle("RT in PA task(warn)") + theme(plot.title = element_text(hjust=0.5))
-g2 <- g2 + annotate(geom="text", x=6, y=540, label="p=0.122")
+             aes(x = Sessions, y = Response_time_mean, group = tDCS, color = tDCS)) + geom_line(size=1)
+g2 <- g2 + geom_errorbar(aes(ymin = Response_time_mean-sr, ymax = Response_time_mean+sr), width = 0.2) + geom_point(size = 3)
+g2 <- g2 + ggtitle("Response time in phasic alertness task(alert)") + theme(plot.title = element_text(hjust=0.5))
+#g2 <- g2 + annotate(geom="text", x=6, y=540, label="p=0.122")
+g2 <- g2 + ylim(440, 580)
+g2 <- g2 + theme(axis.title = element_text(size=20)) + theme(plot.title = element_text(size=20))
 plot(g2)
 
 # PA RT Tendency (Fin)

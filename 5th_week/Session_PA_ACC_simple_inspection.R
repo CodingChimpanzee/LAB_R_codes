@@ -217,6 +217,7 @@ g1 <- ggplot(data = session_bind_PACC_N,
              aes(x = Blocks, y = accuracy, group = Participants_N, color = Participants_N)) + geom_line(size=1)
 g1 <- g1 + geom_point(size = 3)
 g1 <- g1 + ggtitle("SHAM stimulation accuracy in phasic alertness task") + theme(plot.title = element_text(hjust=0.5))
+g1 <- g1 + theme(axis.title = element_text(size=20)) + theme(plot.title = element_text(size=20))
 plot(g1)
 
 # PPC Stimulation
@@ -224,4 +225,5 @@ g2 <- ggplot(data = session_bind_PACC_PPC,
              aes(x = Blocks, y = accuracy, group = Participants_PPC, color = Participants_PPC)) + geom_line(size=1)
 g2 <- g2 + geom_point(size = 3)
 g2 <- g2 + ggtitle("PPC stimulation accuracy in phasic alertness task") + theme(plot.title = element_text(hjust=0.5))
+g2 <- g2 + theme(axis.title = element_text(size=20)) + theme(plot.title = element_text(size=20))
 plot(g2)

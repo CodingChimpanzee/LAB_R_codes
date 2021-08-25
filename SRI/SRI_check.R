@@ -1,2 +1,0 @@
-# Check Participants SRI values
-

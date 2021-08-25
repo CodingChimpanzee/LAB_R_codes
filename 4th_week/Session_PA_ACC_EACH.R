@@ -376,12 +376,15 @@ session_bind_all <- rbind(session_bind_PACC_N, session_bind_PACC_PPC)
 #------------------------------------------------------------------------------#
 # ACC tendency between sessions (in graphs)
 
+session_bind_all <- setnames(session_bind_all, "ACC_mean_diff", "Accuracy_mean_difference")
+session_bind_all <- setnames(session_bind_all, "Blocks", "Sessions")
 
 g1 <- ggplot(data = session_bind_all,
-             aes(x = Blocks, y = ACC_mean_diff, group = tDCS, color = tDCS)) + geom_line(size=1)
-g1 <- g1 + geom_errorbar(aes(ymin = ACC_mean_diff-sr, ymax = ACC_mean_diff+sr), width = 0.2) + geom_point(size = 3)
+             aes(x = Sessions, y = Accuracy_mean_difference, group = tDCS, color = tDCS)) + geom_line(size=1)
+g1 <- g1 + geom_errorbar(aes(ymin = Accuracy_mean_difference-sr, ymax =Accuracy_mean_difference+sr), width = 0.2) + geom_point(size = 3)
 g1 <- g1 + ggtitle("Accuracy difference in phasic alertness task") + theme(plot.title = element_text(hjust=0.5))
 g1 <- g1 + annotate(geom="text", x=1.2, y=0.04, label="**", size = 10, colour = "red") + annotate(geom="text", x=1.2, y=0.01, label="**", size = 10, colour = "red")
+g1 <- g1 + theme(axis.title = element_text(size=20)) + theme(plot.title = element_text(size=20))
 plot(g1)
 
 # P value based on student paired t-test
