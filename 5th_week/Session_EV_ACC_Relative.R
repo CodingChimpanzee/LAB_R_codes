@@ -415,10 +415,12 @@ g1 <- ggplot(data = session_bind_all_EVACC,
              aes(x = Sessions, y = accuracy_mean, group = tDCS, color = tDCS)) + geom_line(size=1)
 g1 <- g1 + geom_errorbar(aes(ymin = accuracy_mean-sr, ymax = accuracy_mean+sr), width = 0.2)
 g1 <- g1 + geom_point(size=3)
-g1 <- g1 + ggtitle("Accuracy in Executive vigilance task") + theme(plot.title = element_text(hjust=0.5))
-g1 <- g1 + annotate(geom="text", x=3.2, y=106, label="**", size = 10, colour = "red") + annotate(geom="text", x=3.2, y=96, label="**", size = 10, colour = "red")
-g1 <- g1 + annotate(geom="text", x=5.2, y=102, label="*", size = 10, colour = "red") + annotate(geom="text", x=5.2, y=96.5, label="*", size = 10, colour = "red")
-g1 <- g1 + theme(axis.title = element_text(size=20)) + theme(plot.title = element_text(size=20))
+g1 <- g1 + ggtitle("Accuracy in executive vigilance task") + theme(plot.title = element_text(hjust=0.5))
+g1 <- g1 + annotate(geom="text", x=3.2, y=106, label="**", size = 10, colour = "black") + annotate(geom="text", x=3.2, y=96, label="**", size = 10, colour = "black")
+g1 <- g1 + annotate(geom="text", x=5.2, y=102, label="*", size = 10, colour = "black") + annotate(geom="text", x=5.2, y=96.5, label="*", size = 10, colour = "black")
+g1 <- g1 + labs(x="Sessions", y="Percentage(%)") + theme_classic() + scale_fill_manual(values=c('#999999','#E69F00'))
+g1 <- g1 + theme(axis.title = element_text(size=18)) + theme(plot.title = element_text(size=25)) + theme(axis.text = element_text(size=16)) + theme(legend.text = element_text(size=15)) + theme(legend.title = element_text(size=20))
+
 plot(g1)
 
 # P value based on student paired t-test

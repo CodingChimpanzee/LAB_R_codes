@@ -458,7 +458,8 @@ g1 <- g1 + geom_point(size=3)
 g1 <- g1 + geom_errorbar(aes(ymin = Accuracy_mean_difference-sr, ymax = Accuracy_mean_difference+sr), width = 0.2)
 g1 <- g1 + ggtitle("Accuracy difference in phasic alertness task") + theme(plot.title = element_text(hjust=0.5))
 g1 <- g1 + annotate(geom="text", x=6.2, y=250, label="*", size = 10) + annotate(geom="text", x=6.2, y=60, label="*", size = 10)
-g1 <- g1 + theme(axis.title = element_text(size=20)) + theme(plot.title = element_text(size=20))
+g1 <- g1 + labs(x="Sessions", y="Percentage(%)") + theme_classic() + scale_fill_manual(values=c('#999999','#E69F00'))
+g1 <- g1 + theme(axis.title = element_text(size=18)) + theme(plot.title = element_text(size=25)) + theme(axis.text = element_text(size=16))
 plot(g1)
 
 # P value based on student paired t-test
